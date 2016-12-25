@@ -1,0 +1,23 @@
+/**
+ * Created by huhai on 2016/12/25.
+ */
+module.exports={
+    entry:"./src/main.js",
+    output:{
+        path:"./dist",
+        filename:"bundle.js"
+    },
+    devtool:"source-map",
+    module:{
+        loaders:[
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                loader:'babel-loader',
+                query:{
+                    presets:['es2015','react']
+                }
+            }
+        ]
+    }
+};
