@@ -7,19 +7,42 @@ var data = [
 ];
 
 
+var  externalMixin={
+    componentDidMount(){
+        console.log("我是来自external的mixin")
+    }
+}
+
+var  externalMixin22={
+    componentDidMount(){
+        console.log("我是来自external22的mixin")
+    }
+}
 var React=require("react"),
         ReactDOM=require("react-dom");
 var CommentBox = React.createClass({
-    getInitialState:function(){
+    constructor(){
+        debugger
+    },
+    getInitialState(){
 
         return {name:"胡海"}
     },
-    componentDidMount:function(){
+    propTypes(){
+    name: React.PropTypes.number
+    },
+    getDefaultProps() {
+        return {
+            name: 'Mary'
+        };
+    },
+    mixins:[externalMixin,externalMixin22],
+    componentDidMount(){
         setTimeout(function() {
             this.setState({name: "张三"})
         }.bind(this),2000)
     },
-    render: function() {
+    render() {
         return (
             <div className="commentBox">
             Hello, world! I am a CommentBox.
@@ -33,7 +56,9 @@ var CommentBox = React.createClass({
         );
     }
 });
+
+
 ReactDOM.render(
-<CommentBox  externalData={data}/>,
+    <CommentBox any={data}/>,
     document.getElementById('content')
 );

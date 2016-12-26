@@ -51,15 +51,38 @@
 	 */
 	var data = [{ id: 1, author: "Pete Hunt", text: "This is one comment" }, { id: 2, author: "Jordan Walke", text: "This is *another* comment" }];
 	
+	var externalMixin = {
+	    componentDidMount: function componentDidMount() {
+	        console.log("我是来自external的mixin");
+	    }
+	};
+	
+	var externalMixin22 = {
+	    componentDidMount: function componentDidMount() {
+	        console.log("我是来自external22的mixin");
+	    }
+	};
 	var React = __webpack_require__(1),
 	    ReactDOM = __webpack_require__(32);
 	var CommentBox = React.createClass({
 	    displayName: "CommentBox",
-	
+	    constructor: function constructor() {
+	        debugger;
+	    },
 	    getInitialState: function getInitialState() {
 	
 	        return { name: "胡海" };
 	    },
+	    propTypes: function propTypes() {
+	        name: React.PropTypes.number;
+	    },
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            name: 'Mary'
+	        };
+	    },
+	
+	    mixins: [externalMixin, externalMixin22],
 	    componentDidMount: function componentDidMount() {
 	        setTimeout(function () {
 	            this.setState({ name: "张三" });
@@ -83,7 +106,8 @@
 	        );
 	    }
 	});
-	ReactDOM.render(React.createElement(CommentBox, { externalData: data }), document.getElementById('content'));
+	
+	ReactDOM.render(React.createElement(CommentBox, { any: data }), document.getElementById('content'));
 
 /***/ },
 /* 1 */
