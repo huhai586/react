@@ -1,6 +1,8 @@
 /**
  * Created by huhai on 2016/12/25.
  */
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 module.exports={
     entry:"./src/main.js",
     output:{
@@ -19,5 +21,12 @@ module.exports={
                 }
             }
         ]
-    }
+    },
+    plugins:[
+        new HtmlWebpackPlugin({
+            title:"HTML-WEBPACK-PLUGIN",
+            hash:true,
+            template:__dirname+"/index.html"
+        })
+    ]
 };
