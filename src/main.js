@@ -15,15 +15,16 @@ var  externalMixin={
 
 var  externalMixin22={
     componentDidMount(){
-        console.log("我是来自external22的mixin")
+        console.log("我是来自external22的mixin");
+        setTimeout(()=>{
+            // alert("hah")
+        },100)
     }
 }
 var React=require("react"),
         ReactDOM=require("react-dom");
 var CommentBox = React.createClass({
-    constructor(){
-        debugger
-    },
+
     getInitialState(){
 
         return {name:"胡海"}

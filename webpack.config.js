@@ -19,14 +19,18 @@ module.exports={
                 query:{
                     presets:['es2015','react']
                 }
+            },
+            {
+                test:/\.jade$/,
+                loader:"jade-loader?pretty"
             }
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
-            title:"HTML-WEBPACK-PLUGIN",
+            title:"HTML-WEBPACK-PLUGIN21",
             hash:true,
-            template:__dirname+"/index.html"
+            template:__dirname+"/jade_template.jade"
         })
     ]
 };
