@@ -11,20 +11,7 @@ var data = [
 ];
 
 
-var  externalMixin={
-    componentDidMount(){
-        console.log("我是来自external的mixin")
-    }
-}
 
-var  externalMixin22={
-    componentDidMount(){
-        console.log("我是来自external22的mixin");
-        setTimeout(()=>{
-            // alert("hah")
-        },100)
-    }
-}
 
 import style from "./css/style.sass";
 // import  E  from "extract-text-webpack-plugin";
@@ -43,9 +30,7 @@ var CommentBox = React.createClass({
             name: 'Mary'
         };
     },
-    huhai(){
-        alert("huhai is trigger")
-    },
+
     componentDidMount(){
         setTimeout(function() {
             this.setState({name: "张三22SDFASF2MMMMMFDFGDF"})
@@ -73,16 +58,25 @@ var CommentBox = React.createClass({
 });
 
 
-var reactInstance=ReactDOM.render(
+ReactDOM.render(
     <CommentBox externalData={data} />,
 
     document.getElementById('content')
 );
 
-var m=1;
-var x={
-    huhai(){},
-    test(){},
-    m
-};
-console.log(x)
+
+
+// Rest properties
+let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // { a: 3, b: 4 }
+
+// Spread properties
+
+let  n = { x, y, ...z };
+console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
+
+
+var xx={a:1};
+console.log({...xx,oo:6})

@@ -2,6 +2,8 @@
  * Created by huhai on 2016/12/25.
  */
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 var path = require('path');
 module.exports={
     entry:"./src/main.js",
@@ -22,14 +24,21 @@ module.exports={
             },
             {
                 test:/\.jade$/,
+                exclude:/node_modules/,
+
                 loader:"jade-loader?pretty"
             },
             {
                 test:/\.sass$/,
+                exclude:/node_modules/,
+
                 loaders:["style-loader","css-loader","sass-loader"]
+                // loader:ExtractTextPlugin.extract("style-loader", "css-loader","sass-loader")
             },
             {
                 test:/\.png|\.jpg$/,
+                exclude:/node_modules/,
+
                 loader:"file-loader"
             }
         ]
@@ -40,5 +49,7 @@ module.exports={
             hash:true,
             template:__dirname+"/jade_template.jade"
         })
+        // new ExtractTextPlugin("styles.css")
+
     ]
 };
