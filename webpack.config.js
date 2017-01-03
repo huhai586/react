@@ -23,6 +23,14 @@ module.exports={
             {
                 test:/\.jade$/,
                 loader:"jade-loader?pretty"
+            },
+            {
+                test:/\.sass$/,
+                loaders:["style-loader","css-loader","sass-loader"]
+            },
+            {
+                test:/\.png|\.jpg$/,
+                loader:"file-loader"
             }
         ]
     },
