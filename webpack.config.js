@@ -43,6 +43,9 @@ module.exports={
             }
         ]
     },
+    externals:{
+        jquery:"jQuery"
+    },
     plugins:[
         new HtmlWebpackPlugin({
             title:"HTML-WEBPACK-PLUGIN21",
