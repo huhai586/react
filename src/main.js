@@ -1,7 +1,11 @@
- import {createStore,combineReducers}  from "redux";
+ import {createStore,combineReducers,applyMiddleware}  from "redux";
+ import createLogger from 'redux-logger';
+ import ReduxThunk from "redux-thunk";
+ const logger = createLogger();
 
 
  var plus=(state = 0, action)=>{
+     console.log(action)
 
     switch (action.type) {
         case 'INCREMENT':
@@ -14,7 +18,7 @@
 }
 
  var dec=(state = 0, action)=>{
-
+        console.log(action)
      switch (action.type) {
          case 'INCREMENT':
              return state + 1
@@ -24,18 +28,23 @@
              return state
      }
  }
-
+ var x=applyMiddleware(logger,ReduxThunk)
 
 
 var rootReducer=combineReducers({plus,dec})
 
- console.log(rootReducer)
-var store=createStore(rootReducer);
+var store=createStore(rootReducer,x);
 
  store.subscribe(()=>{
     console.log("triggered")
  });
 
 
- store.dispatch({type:"INCREMENT"})
 
+
+ function actionCreater(){
+        console.log(arguments)
+        debugger
+ }
+
+ var m=store.dispatch(actionCreater)
