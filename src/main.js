@@ -28,7 +28,7 @@
              return state
      }
  }
- var x=applyMiddleware(logger,ReduxThunk)
+ var x=applyMiddleware(logger,ReduxThunk);
 
 
 var rootReducer=combineReducers({plus,dec})
@@ -37,14 +37,16 @@ var store=createStore(rootReducer,x);
 
  store.subscribe(()=>{
     console.log("triggered")
+
+
  });
 
 
 
 
  function actionCreater(){
-        console.log(arguments)
-        debugger
+        console.log("fun发送完毕")
+        // debugger
  }
-
+console.log("准备dispatch fun")
  var m=store.dispatch(actionCreater)
