@@ -28,7 +28,7 @@
              return state
      }
  }
- var x=applyMiddleware(ReduxThunk,logger);
+ var x=applyMiddleware(logger,ReduxThunk);
 
 
 var rootReducer=combineReducers({plus,dec})
